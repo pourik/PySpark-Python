@@ -13,9 +13,7 @@
     1. **SPARK_HOME c:\spark**
     2. **PYSPARK_PYTHON python**
     3. **HADOOP_HOME c:\hadoop**
-9. Add the following path to your PATH user variable:
-
-**%SPARK_HOME%\bin**
+9. Add the following path to your PATH user variable: **%SPARK_HOME%\bin**
 
 1. Close the environment variable screen and the control panels.
 2. Install the latest **Anaconda for Python 3** from [anaconda.com](https://anaconda.com/). If you already use some other Python environment, that’s OK – you can use it instead, as long as it is a Python 3 environment.
