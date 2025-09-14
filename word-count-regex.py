@@ -1,14 +1,17 @@
 from pyspark import SparkContext, SparkConf
+import re
 
-conf = SparkConf().setMaster("local").setAppName("Word-Count")
-sc = SparkContext(conf=conf)
+conf = SparkConf().setMaster('local').setAppName('Word-Count-Regex')
+sc = SparkContext(conf = conf)
+
+def normalize_words(text):
+    return re.compile(r"\W+", re.UNICODE).split(text.lower())
 
 lines = sc.textFile("file:///PySpark-Python/book.txt")
-words = lines.flatMap(lambda x: x.split())
+words = lines.flatMap(normalize_words)
 wordCounts = words.countByValue()
-print(type(wordCounts))
 
 for word, count in wordCounts.items():
     cleanWord = word.encode('ascii', 'ignore')
-    if (cleanWord):
+    if(cleanWord):
         print(cleanWord.decode() + " " + str(count))
